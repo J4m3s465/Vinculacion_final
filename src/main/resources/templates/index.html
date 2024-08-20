@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Página de Inicio - Empresa de Seguridad</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .welcome-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .btn-custom {
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="welcome-message">Bienvenidos a nuestra Empresa de Seguridad</h1>
+    <a href="/servicios" class="btn btn-custom">Nuestros Servicios</a>
+    <a href="/contacto" class="btn btn-custom">Contáctanos</a>
+    <a th:href="@{/productos/modal}" class="btn btn-success" style="margin-top: 10px;">Registro</a>
+    <a th:href="@{/productos}" class="btn btn-success" style="margin-top: 10px;">Vehiculos</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
