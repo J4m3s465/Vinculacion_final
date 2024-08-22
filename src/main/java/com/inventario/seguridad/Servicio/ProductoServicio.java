@@ -19,10 +19,40 @@
         public Optional<Producto> getProducto(Long id){
             return productoRepositorio.findById(id);
         }
+        public List<Producto> getEntrada() {return productoRepositorio.findAll(); }
+        public Optional<Producto> getEntrada(Long id){
+            return productoRepositorio.findById(id);
+        }
+        public List<Producto> getSalida() {return productoRepositorio.findAll(); }
+        public Optional<Producto> getSalida(Long id){
+            return productoRepositorio.findById(id);
+        }
         public void guardar(Producto producto){
             productoRepositorio.save(producto);
         }
+        public void guardarEntrada(Producto producto){
+            productoRepositorio.save(producto);
+        }
+        public void guardarSalida(Producto producto){
+            productoRepositorio.save(producto);
+        }
         public void eliminar(Long id){
+            try {
+                productoRepositorio.deleteById(id);
+            } catch (EmptyResultDataAccessException e) {
+                // Manejar el caso donde el producto no existe
+                System.out.println("El producto con ID " + id + " no existe.");
+            }
+        }
+        public void eliminarEntrada(Long id){
+            try {
+                productoRepositorio.deleteById(id);
+            } catch (EmptyResultDataAccessException e) {
+                // Manejar el caso donde el producto no existe
+                System.out.println("El producto con ID " + id + " no existe.");
+            }
+        }
+        public void eliminarSalida(Long id){
             try {
                 productoRepositorio.deleteById(id);
             } catch (EmptyResultDataAccessException e) {

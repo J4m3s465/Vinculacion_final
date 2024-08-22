@@ -32,7 +32,18 @@ public class ProductoControlador {
         model.addAttribute("productos", productos);
         return "/productos/producto";
     }
-
+    @GetMapping("/entradas")
+    public String mostrarEntradas(Model model) {
+        List<Producto> productos = productoServicio.getProducto();
+        model.addAttribute("productos", productos);
+        return "/productos/entradas"; // html  tabla de entradas
+    }
+    @GetMapping("/salidas")
+    public String mostrarSalidas(Model model) {
+        List<Producto> productos = productoServicio.getProducto();
+        model.addAttribute("productos", productos);
+        return "/productos/salidas"; // html  tabla de salidas
+    }
 
     // Crear productos
     @GetMapping("/productos/modal")
@@ -47,6 +58,35 @@ public class ProductoControlador {
         productoServicio.guardar(producto);
         return "redirect:/productos";
     }
+    // Crear entradas
+    @GetMapping("/productos/entradas")
+    public String modalEntrada(Model model){
+
+        model.addAttribute("producto", new Producto());
+        return "/productos/modalEntradas";
+    }
+    @PostMapping("/productos/entradas/guardar")
+    public String guardarEntrada(Producto producto){
+        producto.calcularTotal(); // Calcula el total antes de guardar
+        productoServicio.guardar(producto);
+        return "redirect:/entradas";
+    }
+    // Crear salidas
+    @GetMapping("/productos/salidas")
+    public String modalSalida(Model model){
+
+        model.addAttribute("producto", new Producto());
+        return "/productos/modalSalidas";
+    }
+    @PostMapping("/productos/salidas/guardar")
+    public String guardarSalidas(Producto producto){
+        producto.calcularTotal(); // Calcula el total antes de guardar
+        productoServicio.guardar(producto);
+        return "redirect:/salidas";
+    }
+
+
+
 
 
     // Actualizar datos del producto
