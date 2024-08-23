@@ -14,6 +14,7 @@ public class Producto {
     private Long productoId;
     private String productoNombre;
     private String descripcion;
+    private String nombre;
     private int stockInicial;
     private int entradas;
     private int salidas;
