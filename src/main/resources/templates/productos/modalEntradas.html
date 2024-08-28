@@ -58,6 +58,7 @@
             margin-bottom: 15px;
         }
     </style>
+
 </head>
 <body class="body">
 <nav>
@@ -82,7 +83,12 @@
         </div>
         <div class="mb-3">
             <label for="productoId">ID del Producto:</label>
-            <input type="number" id="productoId" class="form-control" name="productoId" th:field="*{productoId}">
+            <select id="productoId" class="form-control" name="productoId" th:field="*{productoId}">
+                <option value="" th:if="${#lists.isEmpty(productos)}">No hay productos disponibles</option>
+                <option th:each="producto : ${productos}"
+                        th:value="${producto.productoId}"
+                        th:text="${producto.productoNombre}+ '  ' +${producto.productoId} "></option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="productoNombre">Nombre del Producto:</label>

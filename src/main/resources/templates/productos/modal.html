@@ -58,6 +58,13 @@
                     margin-bottom: 15px;
                 }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productoIdField = document.getElementById('productoId');
+            const randomId = Math.floor(10000000 + Math.random() * 90000000); // número aleatorio 8 dígitos
+            productoIdField.value = randomId;
+        });
+    </script>
 </head>
 <body class="body">
 <nav>
@@ -73,9 +80,10 @@
 <h2>Formulario de Registro</h2>
 <div class="container-form">
     <form th:action="@{/productos/guardar}" method="post" th:object="${producto}">
+
         <div class="mb-3 mt-3">
             <label for="productoId">ID:</label>
-            <input type="number" class="form-control" id="productoId" placeholder="Enter ID" th:field="*{productoId}">
+            <input type="number" class="form-control" id="productoId" placeholder="Enter ID" th:field="*{productoId}" readonly>
         </div>
         <div class="mb-3 mt-3">
             <label for="productoNombre">Nombre del Producto:</label>
@@ -89,18 +97,8 @@
             <label for="stockInicial">Stock Inicial:</label>
             <input type="number" id="stockInicial" class="form-control" name="stockInicial" th:field="*{stockInicial}">
         </div>
-        <div class="mb-3">
-            <label for="entradas">Entradas:</label>
-            <input type="number" id="entradas" class="form-control" name="entradas" th:field="*{entradas}">
-        </div>
-        <div class="mb-3">
-            <label for="salidas">Salidas:</label>
-            <input type="number" id="salidas" class="form-control" name="salidas" th:field="*{salidas}">
-        </div>
-        <div class="mb-3">
-            <label for="factura">Factura:</label>
-            <input type="number" id="factura" class="form-control" name="factura" th:field="*{factura}">
-        </div>
+
+
 
         <button type="submit" class="btn btn-success">Guardar</button>
     </form>

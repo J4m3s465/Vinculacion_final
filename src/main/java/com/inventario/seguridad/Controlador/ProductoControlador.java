@@ -43,9 +43,8 @@ public class ProductoControlador {
     }
 
     // Crear productos
-    @GetMapping("/productos/modal")
-    public String modalFormulario(Model model){
-
+    @GetMapping("/productos/modalProductos")
+    public String modal(Model model){
         model.addAttribute("producto", new Producto());
         return "/productos/modal";
     }
@@ -58,7 +57,8 @@ public class ProductoControlador {
     // Crear entradas
     @GetMapping("/productos/entradas")
     public String modalEntrada(Model model){
-
+        List<Producto> productos = productoServicio.getProducto();
+        model.addAttribute("productos", productos);
         model.addAttribute("producto", new Producto());
         return "/productos/modalEntradas";
     }
@@ -71,7 +71,8 @@ public class ProductoControlador {
     // Crear salidas
     @GetMapping("/productos/salidas")
     public String modalSalida(Model model){
-
+        List<Producto> productos = productoServicio.getProducto();
+        model.addAttribute("productos", productos);
         model.addAttribute("producto", new Producto());
         return "/productos/modalSalidas";
     }
@@ -81,10 +82,6 @@ public class ProductoControlador {
         productoServicio.guardar(producto);
         return "redirect:/salidas";
     }
-
-
-
-
 
     // Actualizar datos del producto
     @GetMapping("/productos/editar/{productoId}")
@@ -110,6 +107,6 @@ public class ProductoControlador {
     public String buscarProductos(@RequestParam("query") String query, Model model) {
         List<Producto> productos = productoServicio.buscarPorNombre(query);
         model.addAttribute("productos", productos);
-        return "productos";
+        return "redirect:/productos";
     }
 }

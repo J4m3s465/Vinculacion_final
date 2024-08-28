@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name = "productos_registro")
 public class Producto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long productoId;
     private String productoNombre;
     private String descripcion;
@@ -28,4 +28,5 @@ public class Producto {
     public void calcularTotal() {
         this.total = this.entradas + this.stockInicial - this.salidas;
     }
+
 }
