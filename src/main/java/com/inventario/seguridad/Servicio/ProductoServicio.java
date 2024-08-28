@@ -30,6 +30,27 @@
         public void guardar(Producto producto){
             productoRepositorio.save(producto);
         }
+        public Producto actualizarEntradas(Long productoId, int entradas) {
+            Optional<Producto> productoOpt = productoRepositorio.findById(productoId);
+            if (productoOpt.isPresent()) {
+                Producto producto = productoOpt.get();
+                producto.setEntradas(producto.getEntradas() + entradas);
+                producto.calcularTotal();
+                return productoRepositorio.save(producto);
+            }
+            return null;
+        }
+
+        public Producto actualizarSalidas(Long productoId, int salidas) {
+            Optional<Producto> productoOpt = productoRepositorio.findById(productoId);
+            if (productoOpt.isPresent()) {
+                Producto producto = productoOpt.get();
+                producto.setSalidas(producto.getSalidas() + salidas);
+                producto.calcularTotal();
+                return productoRepositorio.save(producto);
+            }
+            return null;
+        }
         public void guardarEntrada(Producto producto){
             productoRepositorio.save(producto);
         }

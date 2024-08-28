@@ -63,9 +63,8 @@ public class ProductoControlador {
         return "/productos/modalEntradas";
     }
     @PostMapping("/productos/entradas/guardar")
-    public String guardarEntrada(Producto producto){
-        producto.calcularTotal(); // Calcula el total antes de guardar
-        productoServicio.guardar(producto);
+    public String guardarEntrada(@RequestParam Long productoId, @RequestParam int entradas){
+        productoServicio.actualizarEntradas(productoId, entradas);
         return "redirect:/entradas";
     }
     // Crear salidas
@@ -77,9 +76,8 @@ public class ProductoControlador {
         return "/productos/modalSalidas";
     }
     @PostMapping("/productos/salidas/guardar")
-    public String guardarSalidas(Producto producto){
-        producto.calcularTotal(); // Calcula el total antes de guardar
-        productoServicio.guardar(producto);
+    public String guardarSalidas(@RequestParam Long productoId, @RequestParam int salidas){
+        productoServicio.actualizarSalidas(productoId, salidas);
         return "redirect:/salidas";
     }
 
