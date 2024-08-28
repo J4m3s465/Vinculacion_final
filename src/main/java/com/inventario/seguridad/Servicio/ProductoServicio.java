@@ -81,8 +81,8 @@
                 System.out.println("El producto con ID " + id + " no existe.");
             }
         }
-        public List<Producto> buscarPorNombre(String nombre) {
-            return productoRepositorio.findByNombreContaining(nombre);
+        public List<Producto> buscarPorNombre(String productoNombre) {
+            return productoRepositorio.findByNombreContaining(productoNombre);
         }
 
     }
