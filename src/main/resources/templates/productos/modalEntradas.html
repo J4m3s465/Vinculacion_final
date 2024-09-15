@@ -66,21 +66,14 @@
         <h1 class="logo" style="font-size: 24px; margin: 0;">Sygmus Seguridad</h1>
         <ul>
             <li><a th:href="@{/entradas}" class="btn btn-success" style="margin-top: 10px;">Entradas</a></li>
-            <li><a th:href="@{/entradas/modal}" class="btn btn-success" style="margin-top: 10px;">Registrar Entrada</a></li>
         </ul>
     </div>
 </nav>
 <h2>Registrar Nueva Entrada</h2>
 <div class="container-form">
     <form th:action="@{/productos/entradas/guardar}" method="post" th:object="${producto}">
-        <div class="mb-3 mt-3">
-            <label for="factura">Número de Factura:</label>
-            <input type="text" class="form-control" id="factura" placeholder="Ingrese número de factura" th:field="*{facturaEntrada}">
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="fechaEntrada">Fecha:</label>
-            <input type="date" id="fechaEntrada" class="form-control" name="fechaEntrada" th:field="*{fechaEntrada}">
-        </div>
+
+
         <div class="mb-3">
             <label for="productoId">ID del Producto:</label>
             <select id="productoId" class="form-control" name="productoId" th:field="*{productoId}">

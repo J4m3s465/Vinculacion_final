@@ -85,14 +85,16 @@ public class ProductoControlador {
     @GetMapping("/productos/editar/{productoId}")
     public String actualiza(@PathVariable Long productoId, Model model){
         Optional<Producto> producto = productoServicio.getProducto(productoId);
-        if (producto.isPresent()) {
-            model.addAttribute("producto", producto.get());
-        } else {
+
+            model.addAttribute("producto", producto);
+
             // Manejar el caso donde el producto no existe
-            return "redirect:/productos";
-        }
-        return "/productos/modal";
+
+        return "/productos/modalEdicion";
     }
+
+
+
 
     // Eliminar
     @GetMapping("/productos/eliminar/{productoId}")
@@ -101,10 +103,10 @@ public class ProductoControlador {
         return "redirect:/productos";
     }
 
-    @GetMapping("/buscar")
+   /* @GetMapping("/buscar")
     public String buscarProductos(@RequestParam("query") String query, Model model) {
         List<Producto> productos = productoServicio.buscarPorNombre(query);
         model.addAttribute("productos", productos);
         return "redirect:/productos";
-    }
+    }*/
 }

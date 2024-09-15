@@ -97,8 +97,7 @@
     <table class="table table-hover" style="background-color: #f9f9f9; border: 1px solid #ddd;">
         <thead style="background-color: #343a40; color: #fff;">
         <tr>
-            <th>Fecha de Salida</th>
-            <th>Factura de salida</th>
+
             <th>ID del Producto</th>
             <th>Nombre del Producto</th>
             <th>Cantidad</th>
@@ -107,8 +106,7 @@
         <tbody>
         <tr  th:each="producto : ${productos}" >
 
-            <td  th:text="${producto.fechaSalida}"></td>
-            <td  th:text="${producto.facturaSalida}"></td>
+
             <td  th:text="${producto.productoId}"></td>
             <td  th:text="${producto.productoNombre}"></td>
             <td  th:text="${producto.salidas}"></td>

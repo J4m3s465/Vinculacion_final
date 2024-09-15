@@ -27,6 +27,8 @@ public class SeguridadWeb {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/productos/guardar").hasRole("ADMIN")
                         .requestMatchers("/productos/modal").hasRole("ADMIN")
+                        .requestMatchers("/productos/entradas").hasRole("ADMIN")
+                        .requestMatchers("/productos/salidas").hasRole("ADMIN")
                         .requestMatchers("productos").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 )
@@ -34,7 +36,13 @@ public class SeguridadWeb {
                         .loginPage("/login")
                         .permitAll()
                         .defaultSuccessUrl("/productos", true)
-                ).csrf(csrf -> csrf.disable())
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
+                )
+                .csrf(csrf -> csrf.disable())
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
